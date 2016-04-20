@@ -12,7 +12,7 @@ const OUTPUT_DIR = './dist/';
 const compile = ( watch ) => {
     const bundler = watchify(
         browserify(
-            `${SRC_DIR}/scripts/main.js`,
+            `${SRC_DIR}/watercolor.js`,
             {
                 debug: true,
                 presets: ['es2015'],
@@ -25,9 +25,9 @@ const compile = ( watch ) => {
             .on( 'error', ( err ) => {
                 console.log( `error: ${err }` );
             })
-            .pipe( source( 'canvasGallery.min.js' ) )
+            .pipe( source( 'watercolor.js' ) )
             .pipe( buffer() )
-            .pipe( ugly() )
+            // .pipe( ugly() )
             .pipe( gulp.dest( OUTPUT_DIR ) );
     }
 
